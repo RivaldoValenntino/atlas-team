@@ -1,0 +1,12 @@
+{
+  "$schema": "https://antigravity.google/schemas/v1/plugin.json",
+  "name": "atlas",
+  "displayName": "ATLAS - AI Engineering Team",
+  "version": "0.1.0",
+  "description": "A centralized, human-controlled AI engineering organization for Antigravity.",
+  "suggestedPrompts": [
+    "Analyze this project and prepare an engineering plan.",
+    "Investigate a bug and propose a verified solution.",
+    "Review the architecture and identify technical risks."
+  ]
+}
