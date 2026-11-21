@@ -49,7 +49,10 @@ param(
     [switch]$SkipGitSync
 )
 
-$ErrorActionPreference = "Stop"
+$ErrorActionPreference = "Continue"
+if (Get-Variable -Name PSNativeCommandUseErrorActionPreference -ErrorAction SilentlyContinue) {
+    $PSNativeCommandUseErrorActionPreference = $false
+}
 
 # Parse Verified safely across all PowerShell caller styles
 $IsVerified = $true

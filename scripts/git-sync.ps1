@@ -29,7 +29,12 @@ param(
     [string]$Branch = "main"
 )
 
-$ErrorActionPreference = "Stop"
+# Use Continue so Git's informational stderr streams (e.g. fetch progress)
+# do not trigger PowerShell terminating exceptions. We check $LASTEXITCODE explicitly.
+$ErrorActionPreference = "Continue"
+if (Get-Variable -Name PSNativeCommandUseErrorActionPreference -ErrorAction SilentlyContinue) {
+    $PSNativeCommandUseErrorActionPreference = $false
+}
 
 # Helper for logging
 $RepoRoot = (Resolve-Path "$PSScriptRoot\..").Path
@@ -145,7 +150,7 @@ try {
     }
 
     # Step 7: Verify staging isolation - MUST ONLY CONTAIN TARGET FILES
-    $StagedFiles = git diff --cached --name-only -split "`r?`n" | Where-Object { $_ -match '\S' }
+    $StagedFiles = @((git diff --cached --name-only) -split "`r?`n" | Where-Object { $_ -match '\S' })
     foreach ($Staged in $StagedFiles) {
         if ($ResolvedTargets -notcontains $Staged) {
             Write-SyncLog "Isolation Violation! Foreign file '$Staged' detected in staging area. Reverting staging." "ERROR"
