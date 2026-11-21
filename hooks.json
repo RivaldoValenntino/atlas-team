@@ -1,0 +1,12 @@
+{
+  "acle-lifecycle": {
+    "enabled": true,
+    "Stop": [
+      {
+        "type": "command",
+        "command": "powershell.exe -ExecutionPolicy Bypass -File ./scripts/acle-hook.ps1",
+        "timeout": 30
+      }
+    ]
+  }
+}

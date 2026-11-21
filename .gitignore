@@ -1,0 +1,7 @@
+# Logs
+logs/
+*.log
+
+# Temp test files
+test-temp-*
+

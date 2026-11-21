@@ -37,6 +37,9 @@ Never modify project files or execute state-changing operations without explicit
 
 ## 6. Learning Governance
 
-- Do not modify permanent knowledge automatically.
-- Submit new lessons for owner review.
-- Keep global and project-specific knowledge separate.
+- The project owner has explicitly granted pre-authorization for the ATLAS Continuous Learning Engine (ACLE).
+- Verified solutions, reusable engineering patterns, coding conventions, and architectural lessons must be automatically extracted, deduplicated, and synchronized to the `atlas-team` repository without requiring a secondary manual approval.
+- Pre-authorization is strictly confined to verified knowledge. Never store assumptions as facts or unverified solutions as verified knowledge.
+- Absolute prohibition on storing credentials, passwords, tokens, API keys, or private customer data in knowledge files.
+- Keep global, project-specific, and debugging lessons strictly separated into their designated directories.
+- Project code modifications, database writes, and external system actions still strictly require explicit owner approval prior to execution.
